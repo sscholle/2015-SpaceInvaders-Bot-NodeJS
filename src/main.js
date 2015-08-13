@@ -1,7 +1,8 @@
 var mapLoader = require('./map'),
     moment = require('moment'),
     stateLoader = require('./state'),
-    util = require('./util');
+    util = require('./util'),
+    bot = require('./bot');
 
 module.exports = main;
 
@@ -15,8 +16,8 @@ function main(outputPath) {
     var map = mapLoader.load(outputPath);
     logMap(map);
 
-    var move = getRandomMove(); // this is where we need to figure out how best to move
-
+    //var move = getRandomMove(); // this is where we need to figure out how best to move
+    var move = bot.getMove(state, map);
 // priority object
 /**
 
@@ -48,7 +49,7 @@ BUILDING FUNCTIONS:
 decide what is fastest bonus to build (static build priority list)
 
 
-// build list: 
+// build list:
 1. Missile Controller
 2. Alien Factory
 
